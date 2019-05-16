@@ -69,4 +69,7 @@
     select id, touxiang, name, phone, username, password
     from admin
   </select>
+  <select id="login" parameterType="Map" resultType="com.oracle.web.bean.Admin">
+     SELECT * FROM admin WHERE username=#{username,jdbcType=VARCHAR}
+    </select>
 </mapper>
