@@ -24,7 +24,7 @@ public class AdminHandler {
 	private AdminService adminService;
 
 	@RequestMapping(value = "/admin")
-	public String register(String name,String phone, String username, String password,
+	public String register(String name, String phone, String username, String password,
 			@RequestParam("touxiang") MultipartFile filetx) throws IllegalStateException, IOException {
 
 		File file = new File("D:\\" + filetx.getOriginalFilename());
@@ -35,7 +35,7 @@ public class AdminHandler {
 
 		System.out.println(touxiang);
 
-		Admin admin = new Admin(null, touxiang, name, phone,username, password);
+		Admin admin = new Admin(null, touxiang, name, phone, username, password);
 
 		adminService.save(admin);
 
@@ -70,7 +70,7 @@ public class AdminHandler {
 	public void queryByUsername(@RequestParam("username") String username, HttpServletResponse response)
 			throws IOException {
 
-		// System.out.println(username);
+	    System.out.println(username);
 
 		Admin a = adminService.login(username);
 
