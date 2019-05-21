@@ -67,8 +67,7 @@ public class AdminHandler {
 	}
 
 	@RequestMapping(value = "/yanzheng", method = RequestMethod.GET)
-	public void queryByUsername(@RequestParam("username") String username, HttpServletResponse response)
-			throws IOException {
+	public void queryByUsername(@RequestParam("username") String username, HttpServletResponse response)throws IOException {
 
 	    System.out.println(username);
 
