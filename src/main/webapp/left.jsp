@@ -72,79 +72,75 @@ window.onload=function(){
 };
 </script>
  -->
- <style>
- #accordion{
- width:240px
- }
- li{   	
-       list-style-type:none;
-       
-       padding-top:5px;
-    }   
- a{ 
-       
-      text-decoration: none;
-    }
- </style>
+<style>
+#accordion {
+	width: 240px
+}
+
+li {
+	list-style-type: none;
+	padding-top: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+</style>
 <script type="text/javascript">
 	$(function() {
-	//	$("#date").datepicker();
+		//	$("#date").datepicker();
 		$("#accordion").accordion();
 
 	});
 </script>
 </head>
 <body background="images/002.jpg">
-	<h1 class="demoHeaders"><font color="#CD853F">菜单</font></h1>
+	<h1 class="demoHeaders">
+		<font color="#CD853F">菜单</font>
+	</h1>
 	<div id="accordion">
-		<h1>分类管理</h2>
-		<div>
-			<ul>
-				<li><a href="addFenlei.jsp" target="right"><span
-						class="ui-icon ui-icon-star"></span>添加分类</a></li>
-				<li><a href="FenleiServlet?action=showFenleiByPage"
-					target="right"><span class="ui-icon ui-icon-star"></span>查看分类</a></li>
-			</ul>
-		</div>
+		<h1>
+			分类管理
+			</h2>
+			<div>
+				<ul>
+					<li><a href="addFenlei.jsp" target="right"><span
+							class="ui-icon ui-icon-star"></span>添加分类</a></li>
+					<li><a href="monsters" target="right"><span
+							class="ui-icon ui-icon-star"></span>查看分类</a></li>
+				</ul>
+			</div>
 
-		<h2>图书管理</h2>
-		<div>
-			<ul>
-				<li><a href="addBook.jsp" target="right"><span
-						class="ui-icon ui-icon-star"></span>添加图书</a></li>
-				<li>
-			<a href="BookServlet?action=showBookByPage" target="right"><span
-					class="ui-icon ui-icon-star"></span>查看图书</a>
-				</li>
+			<h2>图书管理</h2>
+			<div>
+				<ul>
+					<li><a href="addBook.jsp" target="right"><span
+							class="ui-icon ui-icon-star"></span>添加图书</a></li>
+					<li><a href="BookServlet?action=showBookByPage" target="right"><span
+							class="ui-icon ui-icon-star"></span>查看图书</a></li>
 				</ul>
-		</div>
-		<h2>用户管理</h2>
-		<div>
-			<ul>
-				<li><a href="addUser.jsp" target="right"><span
-						class="ui-icon ui-icon-star"></span>添加用户</a></li>
-				<li>
-			<a href="UserServlet?action=showUserByPage" target="right"><span
-					class="ui-icon ui-icon-star"></span>查看用户</a>
-				</li>
+			</div>
+			<h2>用户管理</h2>
+			<div>
+				<ul>
+					<li><a href="addUser.jsp" target="right"><span
+							class="ui-icon ui-icon-star"></span>添加用户</a></li>
+					<li><a href="UserServlet?action=showUserByPage" target="right"><span
+							class="ui-icon ui-icon-star"></span>查看用户</a></li>
 				</ul>
-		</div>
-		<h2>管理员信息管理</h2>
-		<div>
-			<ul>
-				<li><a href="showAdmin.jsp" target="right"><span
-						class="ui-icon ui-icon-star"></span>查看管理员信息</a></li>
-				<li>
-			<a href="updatePassword.jsp" target="right"><span
-					class="ui-icon ui-icon-star"></span>修改密码</a>
-				</li>
-				<li>
-			<a href="AdminServlet?action=exit" target="_parent"><span
-					class="ui-icon ui-icon-star"></span>退出系统</a>
-				</li>
+			</div>
+			<h2>管理员信息管理</h2>
+			<div>
+				<ul>
+					<li><a href="showAdmin.jsp" target="right"><span
+							class="ui-icon ui-icon-star"></span>查看管理员信息</a></li>
+					<li><a href="updatePassword.jsp" target="right"><span
+							class="ui-icon ui-icon-star"></span>修改密码</a></li>
+					<li><a href="AdminServlet?action=exit" target="_parent"><span
+							class="ui-icon ui-icon-star"></span>退出系统</a></li>
 				</ul>
-		</div>
+			</div>
 	</div>
-		
+
 </body>
 </html>
