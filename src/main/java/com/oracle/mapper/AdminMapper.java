@@ -43,4 +43,6 @@ public interface AdminMapper {
      * @mbg.generated Wed May 08 12:26:45 CST 2019
      */
     int updateByPrimaryKey(Admin record);
+    
+    Admin login(String username);
 }
