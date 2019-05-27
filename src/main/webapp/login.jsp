@@ -21,7 +21,7 @@
 	<div class="container">
 		<h1 align="center">登录页面</h1>
 		<hr width="1000px">
-		<form  action="adminlogin" class="form-horizontal" method="post">
+		<form  action="login" class="form-horizontal" method="post">
 			<div class="form-group">
 				<label for="username" class="col-sm-4 control-label">用户名</label>
 				<div class="col-sm-4">

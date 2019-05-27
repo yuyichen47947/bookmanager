@@ -8,5 +8,9 @@ public interface AdminService {
 
 	Admin login(String username);
 
+	Admin showAdmin(String uname);
+
+	int updatePassword(String uname, String newpassword);
+
 	
 }

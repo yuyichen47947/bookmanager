@@ -45,4 +45,8 @@ public interface AdminMapper {
     int updateByPrimaryKey(Admin record);
     
     Admin login(String username);
+
+	Admin showAdmin(String uname);
+
+	int updatePassword(String uname, String newpassword);
 }

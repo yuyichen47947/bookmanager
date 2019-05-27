@@ -132,7 +132,7 @@ window.onload=function(){
 		<h2>管理员信息管理</h2>
 		<div>
 			<ul>
-				<li><a href="showAdmin.jsp" target="right"><span
+				<li><a href="showAdmin" target="right"><span
 						class="ui-icon ui-icon-star"></span>查看管理员信息</a></li>
 				<li>
 			<a href="updatePassword.jsp" target="right"><span
