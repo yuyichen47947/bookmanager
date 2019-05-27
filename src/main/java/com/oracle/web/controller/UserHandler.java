@@ -29,7 +29,7 @@ public class UserHandler {
 		
 		userService.save(user);
 		
-		return "redirect:/monsters";
+		return "redirect:/users";
 		
 	}
 	
@@ -44,7 +44,7 @@ public class UserHandler {
 	 }
 	*/
 	//2.删除用户
-	 @RequestMapping(value="/monster/{id}",method=RequestMethod.DELETE)
+	 @RequestMapping(value="/user/{id}",method=RequestMethod.DELETE)
 	   	public String  delete(@PathVariable("id") Integer id1){
 	   		
 	         User m=new User();
@@ -53,11 +53,11 @@ public class UserHandler {
 	         
 	         userService.delete(m);
 	      
-	       	return "redirect:/monsters";
+	       	return "redirect:/users";
 	       	
 	   	}
 	 //3.查看用户
-	 @RequestMapping(value = "/monsters", method = RequestMethod.GET)
+	 @RequestMapping(value = "/users", method = RequestMethod.GET)
 	   	public String list(Integer pageNow ,HttpServletRequest request) {
 	       	
 	   		if(pageNow==null||pageNow<1){
@@ -77,7 +77,7 @@ public class UserHandler {
 
 	 }
 	 //4.单查用户
-	 @RequestMapping(value="/monster/{id}",method=RequestMethod.GET)
+	 @RequestMapping(value="/user/{id}",method=RequestMethod.GET)
    	public String  updateUI(@PathVariable("id") Integer id,HttpSession session){
    		
          User user=userService.queryOneUser(id);
@@ -90,14 +90,14 @@ public class UserHandler {
        	
    	}
 	 //5.修改用户
-    @RequestMapping(value="/monster",method=RequestMethod.PUT)
+    @RequestMapping(value="/user",method=RequestMethod.PUT)
    	public String  update(User user){
    		
         userService.update(user);
          
          System.out.println(user);
       
-       	return "redirect:/monsters";
+       	return "redirect:/users";
        	
    	}
 	
