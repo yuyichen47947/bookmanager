@@ -230,9 +230,9 @@ var selectAll=document.getElementById("selectAll");
 				<td>${s.username }</td>
 				<td>${s.password }</td>
 				<td>${s.zhucetime }</td>
-				<td><a href="monster/${s.id }"
+				<td><a href="user/${s.id }"
 						class="deleteId btn btn-danger">删除</a></td>
-				<td><a href="monster/${s.id}" class="btn btn-primary">修改</a></td>		
+				<td><a href="user/${s.id}" class="btn btn-primary">修改</a></td>		
 			</tr>
 			</c:forEach>
 			
@@ -260,7 +260,7 @@ var selectAll=document.getElementById("selectAll");
 		<center>
 		    <!-- 更改分页的样式=====》ul列表 -->
 		    <ul class="pager text-center" >
-			<li><a href="monsters?pageNow=1">首页</a> &nbsp;&nbsp;<li>
+			<li><a href="users?pageNow=1">首页</a> &nbsp;&nbsp;<li>
 			<c:if test="${pb.pageNow>1 }">
 				<li><a href="monsters?pageNow=${pb.pageNow-1 }">上一页</a><li>
 			</c:if>
@@ -294,7 +294,7 @@ var selectAll=document.getElementById("selectAll");
 						<span>${i}</span>
 					</c:when>
 					<c:otherwise>
-						<li><a href="monsters?pageNow=${i }">${i }</a></li>
+						<li><a href="users?pageNow=${i }">${i }</a></li>
 					</c:otherwise>
 				</c:choose>
 
@@ -303,7 +303,7 @@ var selectAll=document.getElementById("selectAll");
 			<c:if test="${pb.pageNow<pb.pages }">
 				<li><a href="monsters?pageNow=${pb.pageNow+1 }">下一页</a></li>
 			</c:if>
-			&nbsp;&nbsp; <li><a href="monsters?pageNow=${pb.pages }">尾页</a></li>
+			&nbsp;&nbsp; <li><a href="users?pageNow=${pb.pages }">尾页</a></li>
            </ul>
 		</center>
 		<p align="center">第${pb.pageNow }页/共${pb.pages }页</p>

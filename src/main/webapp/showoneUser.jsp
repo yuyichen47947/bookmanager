@@ -27,7 +27,7 @@
 </head>
 <body background="imgs/3.jpg">
 	
-	<form action="monster" method="post"  class="form-horizontal">
+	<form action="user" method="post"  class="form-horizontal">
         
 		<caption align=center color=red>
 			<h1 align="center">修改用户界面</h1>
@@ -70,7 +70,7 @@
 			<tr>
 				<td align='center' colspan='2'><input type='submit' value='修改' class="btn btn-primary" />
 				   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;<a
-					href='monsters' class="btn btn-primary">取消</a></td>
+					href='users' class="btn btn-primary">取消</a></td>
 			</tr>
 			</table>		
 	  </form>
