@@ -13,7 +13,7 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.oralce.web.bean.User">
+  <insert id="insert" parameterType="com.oracle.web.bean.User">
     insert into user (id, name, phone, 
       username, password, zhucetime
       )
@@ -21,7 +21,7 @@
       #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{zhucetime,jdbcType=VARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.oralce.web.bean.User">
+  <update id="updateByPrimaryKey" parameterType="com.oracle.web.bean.User">
     update user
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
