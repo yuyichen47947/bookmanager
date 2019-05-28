@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.oracle.web.bean.Fenlei;
 import com.oracle.web.service.FenleiService;
 
+
 @Controller
 @Scope(value = "prototype")
 public class FenleiHandler {
-
+    @Autowired
 	private FenleiService fenleiService;
 
 	@RequestMapping(value = "/monsters", method = RequestMethod.GET)
@@ -26,7 +28,7 @@ public class FenleiHandler {
 		List<Fenlei> list = fenleiService.selectAll();
 
 		request.setAttribute("mList", list);
-
+		
 		return "showFenlei";
 
 	}
@@ -36,7 +38,6 @@ public class FenleiHandler {
 
 		fenleiService.insert(fenlei);
 
-		System.out.println("ok");
 		return "redirect:/monsters";
 	}
 
@@ -47,9 +48,20 @@ public class FenleiHandler {
 
 		session.setAttribute("fenlei", fenlei);
 
-		return "redirect:/UpdateFenlei.jsp";
+		return "redirect:/updateFenlei.jsp";
 	}
 
+	@RequestMapping(value = "/monster", method = RequestMethod.PUT)
+	public String update(Fenlei fenlei) {
+
+		fenleiService.update(fenlei);
+
+		// System.out.println(monster);
+
+		return "redirect:/monsters";
+
+	}
+	
 	// @RequestMapping(value = "/monster", method = RequestMethod.PUT)
 	// public String update(Monster monster) {
 	//

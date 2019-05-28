@@ -103,12 +103,10 @@ a {
 			分类管理
 			</h2>
 			<div>
-				<ul>
-					<li><a href="addFenlei.jsp" target="right"><span
-							class="ui-icon ui-icon-star"></span>添加分类</a></li>
-					<li><a href="monsters" target="right"><span
-							class="ui-icon ui-icon-star"></span>查看分类</a></li>
-				</ul>
+				<li><a href="addFenlei.jsp" target="right"><span
+						class="ui-icon ui-icon-circle-plus"></span>添加分类</a></li>
+				<li><a href="monsters" target="right"><span
+						class="ui-icon ui-icon-copy"></span>查看分类</a></li>
 			</div>
 
 			<h2>图书管理</h2>
@@ -120,15 +118,17 @@ a {
 							class="ui-icon ui-icon-star"></span>查看图书</a></li>
 				</ul>
 			</div>
-			  <h3>用户管理</h3>
-		<div>
-				<li><a  href="addUser.jsp" target="right"><span class="ui-icon ui-icon-circle-plus"></span>添加用户</a></li>
-				<li><a href="users" target="right"  ><span class="ui-icon ui-icon-copy"></span>查看用户</a></li>
-				
-			
+			<h3>用户管理</h3>
+			<div>
+				<li><a href="addUser.jsp" target="right"><span
+						class="ui-icon ui-icon-circle-plus"></span>添加用户</a></li>
+				<li><a href="users" target="right"><span
+						class="ui-icon ui-icon-copy"></span>查看用户</a></li>
 
-	 
-	  </div>
+
+
+
+			</div>
 			<h2>管理员信息管理</h2>
 			<div>
 				<ul>

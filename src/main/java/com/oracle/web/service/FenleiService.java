@@ -14,4 +14,6 @@ public interface FenleiService {
 
 	void delete(Fenlei fenlei);
 
+	void update(Fenlei fenlei);
+
 }
