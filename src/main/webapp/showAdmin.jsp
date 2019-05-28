@@ -39,7 +39,7 @@
 			
 			<tr align="center">
 			    <td>头像</td>
-				<td><img src="/img${admin.touxiang }" style="width:60px;height:50px" class="img-circle img-responsive"/></td>
+				<td><img src="touxiang/${sessionScope.touxiang }" style="width:60px;height:50px" class="img-circle img-responsive"/></td>
 			</tr>
 			
 			<tr align="center">
