@@ -27,13 +27,15 @@ public class AdminHandler {
 
 	@RequestMapping(value = "/admin")
 	public String register(String name, String phone, String username, String password,
-			@RequestParam("touxiang") MultipartFile filetx) throws IllegalStateException, IOException {
+			@RequestParam("touxiang") MultipartFile filetx,HttpServletRequest request) throws IllegalStateException, IOException {
 
-		File file = new File("D:\\book" + filetx.getOriginalFilename());
+		String str=request.getSession().getServletContext().getRealPath("/touxiang");
+		
+		File file = new File(str+"\\" + filetx.getOriginalFilename());
 		
 		filetx.transferTo(file);
 
-		String touxiang = "D:\\book" + filetx.getOriginalFilename();
+		String touxiang = str+"\\" + filetx.getOriginalFilename();
 
 		System.out.println(touxiang);
 
@@ -63,6 +65,10 @@ public class AdminHandler {
 			return "login";
 
 		} else {
+			
+			String str=a.getTouxiang().substring(a.getTouxiang().lastIndexOf("\\")+1);
+			
+			session.setAttribute("touxiang", str);
 
 			return "index";
 
@@ -76,8 +82,6 @@ public class AdminHandler {
 	    System.out.println(username);
 	    
 		Admin a = adminService.login(username);
-
-		response.setContentType("text/html;charset=UTF-8");
 
 		if (a != null) {
 
@@ -93,12 +97,8 @@ public class AdminHandler {
 	
 	@RequestMapping(value = "/showAdmin", method = RequestMethod.GET)
 	public String showAdmin(HttpServletResponse response,HttpServletRequest request,HttpSession session){
-
-		response.setContentType("text/html;charset=UTF-8");
 		
 		String uname=(String)session.getAttribute("username");
-		
-		System.out.println(uname);
 		
     	Admin a=adminService.showAdmin(uname);
     	
