@@ -113,7 +113,7 @@ window.onload=function(){
 				<li><a href="addBook.jsp" target="right"><span
 						class="ui-icon ui-icon-star"></span>添加图书</a></li>
 				<li>
-			<a href="BookServlet?action=showBookByPage" target="right"><span
+			<a href="books" target="right"><span
 					class="ui-icon ui-icon-star"></span>查看图书</a>
 				</li>
 				</ul>

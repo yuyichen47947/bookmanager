@@ -1,10 +1,14 @@
 package com.oracle.web.service;
 
+import java.util.List;
+
 import com.oracle.web.bean.Book;
 import com.oracle.web.bean.PageBean;
 import com.oracle.web.bean.SubBook;
 
 public interface BookService {
+	
+	List<Book> list();
 
 	int save(Book book);
 
@@ -14,6 +18,6 @@ public interface BookService {
 
 	void update(Book book);
 
-	PageBean<SubBook> selectAllByPageHelper(Integer pageNow);
+	PageBean<SubBook> selectAllByPage(Integer pageNow);
 
 }

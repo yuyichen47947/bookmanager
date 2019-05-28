@@ -16,6 +16,8 @@ public interface BookMapper {
     List<Book> selectAll();
 
     int updateByPrimaryKey(Book record);
+    
+    int selectCounts();
 
-	List<SubBook> selectAllByPageHelper();
+	List<SubBook> selectAllByPage();
 }

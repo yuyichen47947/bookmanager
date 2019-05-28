@@ -1,150 +1,157 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 1.要使用Bootstrap的话，必须是html5文档-->
+<meta charset="UTF-8">
+<!-- 2.移动设备优先 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Bootstrap -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<!-- 3.导入核心的css文件 -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+<!-- 4.需要引入jQuery文件 -->
+<script type="text/javascript" src="bootstrap/js/jQuery.js"></script>
+<!-- 5.引入Bootstrap的核心JS文件 -->
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>修改图书</title>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="jQuery/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	/* $(function() {
+
+		$("tr:even").css("background-color", "transparent");
+
+		$("tr:odd").css("background-color", "transparent");
+
+		//事件
+		$("tr").mouseover(function() {
+
+			$(this).css("background-color", "LightYellow");
+		});
+
+		$("tr").mouseout(function() {
+
+			$("tr:even").css("background-color", "transparent");
+
+			$("tr:odd").css("background-color", "transparent");
+		});
+	}); */
+
+	/* window.onload = function() {
+
+		ajax({
+
+			method : "POST",
+
+			url : "FenleiServlet",
+
+			ansy : true,
+
+			params : "action=updateShowFenlei",
+
+			type : "xml",
+
+			success : function(data) {
+
+				var select = document.getElementById("fenleiList");
+
+				var names = data.getElementsByTagName("name");
+
+				for (var i = 0; i < names.length; i++) {
+
+					var name = names[i];
+
+					var opt = document.createElement("option");
+
+					var value;
+
+					if (window.addEventListener) {
+
+						value = name.textContent;
+
+					} else {
+
+						value = text;
+					}
+
+					opt.innerHTML = value;
+
+					opt.value = value;
+
+					select.appendChild(opt);
+				}
+			}
+		}); */
+</script>
 </head>
-<body>
-	<div class="container" align="center">
-		<h1 align="center">图书管理系统---------修改图书界面</h1>
-		<hr width="1000px">
-		<!-- http://localhost/SSH2_SpringMVC/monster -->
-		<form action="book" class="form-horizontal" method="post">
-			<!-- 添加隐藏域，把请求变成PUT -->
-			<input type="hidden" name="_method" value="PUT" />
-			<!-- 不允许修改 所以 做一个隐藏域  monsterId带过去 -->
-			<input type="hidden" name="bid" value="${b.bid }" />
-
-			<div class="form-group">
-
-				<div class="col-sm-4">
-					<select name="fId" class="form-control">
-						<!-- list传过去应该是1   2    3    -->
-						<!-- monster school    schoolId  2 -->
+<body background="./images/40.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
+				<form action="book" method="post"
+					enctype="application/x-www-form-urlencoded">
+					<input type="hidden" name="_method" value="PUT"> <input
+						type="hidden" name="id" value="${book.bid }" />
+					<h1 class="text-center text-danger">
+						<font face="幼圆">修改图书信息</font>
+					</h1>
+					<hr>
+					<ul class="nav">
+						<li><b>请选择您想要修改的分类:</b></li>
+						<li> 
+						<select name="fId" class="form-control">
+						<!-- list 1 2 3 -->
+						<!-- monster school schoolId 2 -->
 						<c:forEach items="${flist }" var="f">
-							<c:if test="${f.f_id ==fenlei.f_id }">
-								<option value="${f.f_id }" selected="selected">${f.fname }</option>
+							<c:if test="${f.fId == book.fenlei.fId}">
+								<option value="${f.fId }" selected="selected">${f.fname }</option>
 							</c:if>
-							<c:if test="${f.f_id !=fenlei.f_id }">
-								<option value="${f.f_id }">${f.fname }</option>
+							<c:if test="${f.fId != book.fenlei.fId}">
+								<option value="${f.fId }">${f.fname }</option>
 							</c:if>
 						</c:forEach>
-					</select>
-				</div>
+						</select></li>
+					</ul>
+					<br>
+
+					<div class="form-group">
+						<label>图&nbsp;书&nbsp;名&nbsp;称:</label> <input type="text"
+							name="bname" class="form-control" value="${book.bname }" />
+					</div>
+					<div class="form-group">
+						<label>图&nbsp;书&nbsp;价&nbsp;格:</label> <input type="text"
+							name="price" class="form-control" value="${book.price }" />
+					</div>
+					<div class="form-group">
+						<label>出&nbsp;&nbsp;&nbsp;版&nbsp;&nbsp;&nbsp;社:</label> <input
+							type="text" name="chubanshe" class="form-control"
+							value="${book.chubanshe }" />
+					</div>
+					<div class="form-group">
+						<label>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态:</label> <input
+							type="text" name="zhuangtai" value="${book.zhuangtai }"
+							class="form-control" />
+					</div>
+					<div class="form-group">
+						<label>借&nbsp;&nbsp;&nbsp;书&nbsp;&nbsp;&nbsp;人:</label> <input
+							type="text" name="jieshuren" class="form-control"
+							value="${book.jieshuren }" />
+					</div>
+					<br>
+					<div class="form-group text-center">
+						<ul class="list-inline">
+							<li><button type="submit" class="btn btn-warning"
+									style="width: 200px;">修改</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="reset" class="btn btn-danger"
+									style="width: 200px;">清空</button></li>
+						</ul>
+					</div>
+				</form>
 			</div>
-
-
-
-			<div class="form-group">
-				<label for="bid" class="col-sm-4 control-label">图书编号</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="bid" name="bid"
-						value="${b.bid }">
-				</div>
-			</div>
-
-
-
-			<div class="form-group">
-				<label for="fname" class="col-sm-4 control-label">图书分类</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="fname" name="fname"
-						value="${b.fname }">
-				</div>
-			</div>
-
-
-
-			<div class="form-group">
-				<label for="bname" class="col-sm-4 control-label">图书名称</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="bname" name="bname"
-						value="${b.bname }">
-				</div>
-			</div>
-
-
-
-			<div class="form-group">
-				<label for="price" class="col-sm-4 control-label">图书价格</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="price" name="price"
-						value="${b.price }">
-				</div>
-			</div>
-
-
-			<div class="form-group">
-				<label for="chubanshe" class="col-sm-4 control-label">出版社</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="chubanshe" name="chubanshe"
-						value="${b.chubanshe }">
-				</div>
-			</div>
-
-
-			<div class="form-group">
-				<label for="zhuangtai" class="col-sm-4 control-label">图书状态</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="zhuangtai" name="zhuangtai"
-						value="${b.zhuangtai }">
-				</div>
-			</div>
-
-
-
-			<div class="form-group">
-				<label for="jieshuren" class="col-sm-4 control-label">借书人</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="jieshuren" name="jieshuren"
-						value="${b.jieshuren }">
-				</div>
-			</div>
-
-
-
-
-			<div class="form-group">
-				<label for="f_id" class="col-sm-4 control-label">分类编号</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="f_id" name="f_id"
-						value="${b.f_id }">
-				</div>
-			</div>
-
-
-
-
-			<div class="form-group">
-				<label for="price" class="col-sm-4 control-label">图书价格</label>
-				<div class="col-sm-4">
-					<input type="text" class="form-control" id="price" name="price"
-						value="${b.price }">
-				</div>
-			</div>
-
-
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-4">
-					<button type="submit" class="btn btn-primary">修改</button>
-				</div>
-			</div>
-		</form>
-
+		</div>
 	</div>
 </body>
 </html>

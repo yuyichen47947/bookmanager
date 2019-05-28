@@ -5,8 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,11 @@ import com.oracle.web.bean.SubBook;
 import com.oracle.web.service.BookService;
 import com.oracle.web.service.FenleiService;
 
+
+
+
+@Controller
+@Scope(value = "prototype")
 public class BookHandler {
 
 	@Autowired
@@ -25,21 +31,31 @@ public class BookHandler {
 
 	@Autowired
 	private FenleiService fenleiService;
+	
+//	@RequestMapping(value = "/books", method = RequestMethod.GET)
+//	public String Books(HttpServletRequest request) {
+//
+//		List<Book> bList = bookService.list();
+//
+//		request.setAttribute("bList", bList);
+//
+//		return "showBook";
+//	}
 
 	@RequestMapping(value = "/addUI", method = RequestMethod.GET)
 	public String addUI(HttpServletRequest request) {
 
 		List<Fenlei> list = fenleiService.list();
 
-		request.setAttribute("flist", list);
+		request.setAttribute("list", list);
 
-		return "add";
+		return "addBook";
 	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
 	public String add(Book book) {
 
-		bookService.save(book);
+		int i = bookService.save(book);
 
 		return "redirect:/books";// 重定向
 	}
@@ -47,11 +63,11 @@ public class BookHandler {
 	@RequestMapping(value = "/book/{bid}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("bid") Integer id) {
 
-		Book b = new Book();
+		Book book = new Book();
 
-		b.setBid(id);
+		book.setBid(id);
 
-		bookService.delete(b);
+		bookService.delete(book);
 
 		return "redirect:/books";// 重定向
 	}
@@ -61,13 +77,13 @@ public class BookHandler {
 
 		Book book = bookService.queryOneBook(id);
 
-		session.setAttribute("b", book);
+		session.setAttribute("book", book);
 
-		List<Fenlei> list = fenleiService.list();
+		List<Fenlei> flist = fenleiService.list();
 
-		session.setAttribute("flist", list);
+		session.setAttribute("flist", flist);
 
-		return "redirect:/update.jsp";
+		return "redirect:/updateBook.jsp";
 	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.PUT)
@@ -77,24 +93,23 @@ public class BookHandler {
 
 		return "redirect:/books";
 	}
-	
-	@RequestMapping(value="/books",method=RequestMethod.GET)
-	public String showPageBook(Integer pageNow,HttpServletRequest request){
-		
-		if(pageNow==null||pageNow<1){
-			
-			pageNow=1;
+
+	@RequestMapping(value = "/books", method = RequestMethod.GET)
+	public String showPageBook(Integer pageNow, HttpServletRequest request) {
+
+		if (pageNow == null || pageNow < 1) {
+
+			pageNow = 1;
 		}
-		
-		PageBean<SubBook> pb=this.bookService.selectAllByPageHelper(pageNow);
-		
+
+		PageBean<SubBook> pb = this.bookService.selectAllByPage(pageNow);
+
 		System.out.println(pb);
-		
+
 		request.setAttribute("pb", pb);
-		
-		return "list";
-		
+
+		return "showBook";
+
 	}
-	
-	
+
 }
