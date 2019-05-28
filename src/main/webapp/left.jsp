@@ -118,6 +118,7 @@ a {
 							class="ui-icon ui-icon-star"></span>查看图书</a></li>
 				</ul>
 			</div>
+<<<<<<< HEAD
 			<h3>用户管理</h3>
 			<div>
 				<li><a href="addUser.jsp" target="right"><span
@@ -138,8 +139,32 @@ a {
 							class="ui-icon ui-icon-star"></span>修改密码</a></li>
 					<li><a href="AdminServlet?action=exit" target="_parent"><span
 							class="ui-icon ui-icon-star"></span>退出系统</a></li>
+=======
+			 
+			  <h3>用户管理</h3>
+		<div>
+				<li><a  href="addUser.jsp" target="right"><span class="ui-icon ui-icon-circle-plus"></span>添加用户</a></li>
+				<li><a href="users" target="right"  ><span class="ui-icon ui-icon-copy"></span>查看用户</a></li>
+					 
+	  </div>
+			
+		<h2>管理员信息管理</h2>
+		<div>
+			<ul>
+				<li><a href="showAdmin" target="right"><span
+						class="ui-icon ui-icon-star"></span>查看管理员信息</a></li>
+				<li>
+			<a href="updatePassword.jsp" target="right"><span
+					class="ui-icon ui-icon-star"></span>修改密码</a>
+				</li>
+				<li>
+			<a href="AdminServlet?action=exit" target="_parent"><span
+					class="ui-icon ui-icon-star"></span>退出系统</a>
+				</li>
+>>>>>>> branch 'master' of https://github.com/yuyichen47947/bookmanager.git
 				</ul>
-			</div>
+		</div>
+
 	</div>
 
 </body>

@@ -23,53 +23,7 @@
 <script type="text/javascript" src="js/ajax.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-	/* var flag=false;
-	  
-	  function validatePassword() {
-	  
-	  var xmlhttp=getXMLHttpRequest();
 
-	  var passwordMsg=document.getElementById("passwordMsg");       
-
-	  var password=document.updatePassword.password;
-	  
-	  xmlhttp.open("POST","AdminServlet",true);
-
-	  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-	  xmlhttp.send("action=validatePassword&password="+password.value);
-
-	  xmlhttp.onreadystatechange=function(){
-		
-	 if(xmlhttp.readyState==4 && xmlhttp.status==200){
-	
-	var content=xmlhttp.responseText;
-							
-	  if(content== "1"){
-		   
-		  passwordMsg.style.color="green";
-	   
-		  passwordMsg.innerHTML="密码正确";
-	       
-	       flag=true;
-		   
-	   }else{
-		   
-		  passwordMsg.style.color="red";
-		   
-		  passwordMsg.innerHTML="密码错误";
-	       
-		  password.focus();
-		   
-	       flag=false;
-		  
-	   }
-	   
-	  }
-
-	}
-	  }
-	 */
 	//校验原密码
 	var flag;
 
@@ -183,9 +137,7 @@
 </script>
 </head>
 <body align="center" background="images/003.jpg">
-	<form action="AdminServlet?action=updatePassword" method="post"
-		name="updatePassword" onsubmit="return jiaoyan()"
-		enctype="application/x-www-form-urlencoded">
+	<form action="updatePassword" method="post" onsubmit="return jiaoyan()"enctype="application/x-www-form-urlencoded">
 		<br>
 		<p align="center"><font size="7" >修改密码</font></p>
 		<hr size="5px" width="600px" color="#cc6600">
