@@ -97,15 +97,15 @@
 		 </tr>
 		    <tr align="center">		 
 			<td>出&nbsp;&nbsp;&nbsp;版&nbsp;&nbsp;&nbsp;社：</td>
-			<td><input type="text" name="publish"/></td>
+			<td><input type="text" name="chubanshe"/></td>
 		 </tr>
 		    <tr align="center">		 
 			<td>状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态：</td>
-			<td><input type="radio"name="state" value="未借出" checked />未借出<input type="radio" name="state" value="借出"/>借出</td>
+			<td><input type="radio"name="zhuangtai" value="未借出" checked />未借出<input type="radio" name="zhuangtai" value="借出"/>借出</td>
 		 </tr>
 		    <tr align="center">		 
 			<td>借&nbsp;&nbsp;&nbsp;书&nbsp;&nbsp;&nbsp;人：</td>
-			<td><input type="text" name="borrower"/></td>
+			<td><input type="text" name="jieshuren"/></td>
 		 </tr>
 		    <tr align="center">		 
 			<td colspan="2"><input type="submit" value="添加" class="btn btn-primary btn-default"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重填" class="btn btn-active btn-default"/></td>
