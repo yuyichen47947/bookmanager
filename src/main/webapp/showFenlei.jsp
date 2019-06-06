@@ -182,13 +182,13 @@ var selectAll=document.getElementById("selectAll");
 				
 				<!-- <td>删除</td> -->
 			</tr>
-			<c:forEach items="${mList}" var="s" varStatus="f">
+			<c:forEach items="${pb.beanList}" var="s" varStatus="f">
 				<tr align=center>
                       <td><input type="checkbox" name="ids" value="${s.fId}"></td>
 					<td>${f.index+1}</td>
 					<td>${s.fId}</td>
 					<td>${s.fname}</td>
-					<td><a href="monster/${s.fId }" class="btn btn-primary">修改</a></td>
+					<td><a href="monster/${s.fId }" class="updateId">修改</a></td>
                   <td><a href="monster/${s.fId }" class="deleteId ">删除</a></td>
 
 				</tr>
@@ -214,59 +214,60 @@ var selectAll=document.getElementById("selectAll");
 		  <input type="hidden" name="_method" value="DELETE"/>
 		</form>
 		
-		<p class="text-center">  
-		  
-		   
-		     第${pb.pageNow }页/共 ${pb.pages }页  &nbsp;&nbsp;
-		     
-		     
-		   
-		     <ul class="pager text-center" >
-		  <li> <a href="<%=base %>Fenleiservlet?action=showFenleiByPage&pageNow=1">首页</a></li>
-		   &nbsp;&nbsp;
-		   <c:if test="${pb.pageNow>1 }">
-		  <li ><a href="<%=base %>Fenleiservlet?action=showFenleiByPage&pageNow=${pb.pageNow-1 }">上一页</a></li>
-		    </c:if>
-		   &nbsp;
-		   <c:choose >
-		     <c:when test="${pb.pages<=10 }">
-		       <c:set var="begin" value="1"></c:set>
-		       <c:set var="end" value="${pb.pages }"></c:set>
-		     </c:when>
-		     <c:otherwise>
-		       <c:set var="begin" value="${pb.pageNow-5 }"></c:set>
-		       <c:set var="end" value="${pb.pageNow+4 }"></c:set>
-		          <c:if test="${begin<=1}">
-		             <c:set var="begin" value="1" ></c:set>
-		             <c:set var="end" value="10"></c:set>
-		          </c:if>
-		          <c:if test="${end>=pb.pages }">
-		              <c:set var="begin" value="${pb.pages-9 }"></c:set>
-		       <c:set var="end" value="${pb.pages }"></c:set>
-		          </c:if>
-		     </c:otherwise>
-		   </c:choose>
-		   <!-- 开始循环 -->
-		  <c:forEach begin="${begin }" end="${end }" var="i">
-		     <c:choose>
-		      <c:when test="${pb.pageNow==i }">
-		       <li class="active"><span>${i }</span> </li>
-		       </c:when>
-		       <c:otherwise>
-		        <li><a href="<%=base %>Fenleiservlet?action=showFenleiByPage&pageNow=${i }">${i }</a><li>
-		       </c:otherwise>
-		     </c:choose>
-		  </c:forEach>
-		   &nbsp;
-		   <c:if test="${pb.pageNow<pb.pages }">
-		  <li> <a href="<%=base %>Fenleiservlet?action=showFenleiByPage&pageNow=${pb.pageNow+1 }"> 下一页</a></li>
-		     </c:if>
-		   &nbsp;&nbsp;
-		 
-		 <li> <a href="<%=base %>Fenleiservlet?action=showFenleiByPage&pageNow=${pb.pages }">尾页</a></li>
-		   </center>
-		   </ul>
-		</p>
+		<center>
+		    <!-- 更改分页的样式=====》ul列表 -->
+		    <ul class="pager text-center" >
+			<li><a href="monsters?pageNow=1">首页</a> &nbsp;&nbsp;<li>
+			<c:if test="${pb.pageNow>1 }">
+				<li><a href="monsters?pageNow=${pb.pageNow-1 }">上一页</a><li>
+			</c:if>
+			&nbsp; 
+			<!-- 分两种情况：
+		         如果页数小于10：
+		         如果页数大于10：         
+		        -->
+			  <c:choose>
+				<c:when test="${pb.pages<=10 }">
+					<c:set var="begin" value="1"></c:set>
+					<c:set var="end" value="${pb.pages }"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="begin" value="${pb.pageNow-5 }"></c:set>
+					<c:set var="end" value="${pb.pageNow+4 }"></c:set>
+					<c:if test="${begin<=1 }">
+						<c:set var="begin" value="1"></c:set>
+						<c:set var="end" value="10"></c:set>
+					</c:if>
+					<c:if test="${end>=pb.pages }">
+						<c:set var="begin" value="${pb.pages-9 }"></c:set>
+						<c:set var="end" value="${pb.pages }"></c:set>
+					</c:if>
+				</c:otherwise>
+			</c:choose> 
+			<!-- 循环十个数 -->
+		 <c:forEach begin="${begin }" end="${end }" var="i">
+				<c:choose>
+					<c:when test="${pb.pageNow==i }">
+						<span>${i}</span>
+					</c:when>
+					<c:otherwise>
+						<li><a href="monsters?pageNow=${i }">${i }</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</c:forEach>
+			&nbsp;
+			<c:if test="${pb.pageNow<pb.pages }">
+				<li><a href="monsters?pageNow=${pb.pageNow+1 }">下一页</a></li>
+			</c:if>
+			&nbsp;&nbsp; <li><a href="monsters?pageNow=${pb.pages }">尾页</a></li>
+           </ul>
+		</center>
+		<p align="center">第${pb.pageNow }页/共${pb.pages }页</p>
+		<br>
+    
+        
+        <br>
 		<table align="center">
 			<tr align="center">
 				

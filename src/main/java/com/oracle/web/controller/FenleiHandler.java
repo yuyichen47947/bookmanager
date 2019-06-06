@@ -13,24 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.oracle.web.bean.Fenlei;
+import com.oracle.web.bean.PageBean;
 import com.oracle.web.service.FenleiService;
-
 
 @Controller
 @Scope(value = "prototype")
 public class FenleiHandler {
-    @Autowired
+	@Autowired
 	private FenleiService fenleiService;
 
 	@RequestMapping(value = "/monsters", method = RequestMethod.GET)
-	public String Monsters(HttpServletRequest request) {
+	public String list(Integer pageNow, HttpServletRequest request) {
 
-		List<Fenlei> list = fenleiService.selectAll();
+		if (pageNow == null || pageNow < 1) {
 
-		request.setAttribute("mList", list);
-		
+			pageNow = 1;
+
+		}
+
+		PageBean<Fenlei> pb = fenleiService.selectAllPage(pageNow);
+
+		request.setAttribute("pb", pb);
+
+		System.out.println(pb);
+
 		return "showFenlei";
-
 	}
 
 	@RequestMapping(value = "/addfenlei", method = RequestMethod.POST)
@@ -38,15 +45,17 @@ public class FenleiHandler {
 
 		fenleiService.insert(fenlei);
 
+		System.out.println(fenlei);
+
 		return "redirect:/monsters";
 	}
 
 	@RequestMapping(value = "/monster/{id}", method = RequestMethod.GET)
 	public String updateUI(@PathVariable("id") Integer id, HttpSession session) {
 
-		Fenlei fenlei = fenleiService.selectByPrimaryKey(id);
+		Fenlei fenlei = fenleiService.queryOneMonster(id);
 
-		session.setAttribute("fenlei", fenlei);
+		session.setAttribute("m", fenlei);
 
 		return "redirect:/updateFenlei.jsp";
 	}
@@ -56,21 +65,11 @@ public class FenleiHandler {
 
 		fenleiService.update(fenlei);
 
-		// System.out.println(monster);
+		System.out.println(fenlei);
 
 		return "redirect:/monsters";
 
 	}
-	
-	// @RequestMapping(value = "/monster", method = RequestMethod.PUT)
-	// public String update(Monster monster) {
-	//
-	// monsterService.update(monster);
-	//
-	// //System.out.println(monster);
-	//
-	// return "redirect:/monsters/1";
-	// }
 
 	@RequestMapping(value = "/monster/{id}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") Integer id1) {
