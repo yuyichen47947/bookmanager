@@ -64,7 +64,7 @@
 								password : {
 									validators : {
 										notEmpty : {
-											message : '密码不能为为空'
+											message : '密码不能为空'
 										},
 										regexp : {
 											regexp : /^(\w|\w){6,15}$/,

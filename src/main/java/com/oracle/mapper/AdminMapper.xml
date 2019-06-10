@@ -77,7 +77,11 @@
      select id, touxiang, name, phone, username, password FROM admin WHERE username=#{username,jdbcType=VARCHAR}
     </select>
     
-    <select id="updatePassword" resultType="com.oracle.web.bean.Admin">
-     select id, touxiang, name, phone, username, password FROM admin WHERE username=#{username,jdbcType=VARCHAR}
+    <select id="updatePassword" resultType="com.oracle.web.bean.Admin"> 
+     update admin set password=#{password,jdbcType=VARCHAR} where username=#{username,jdbcType=VARCHAR}
+    </select>
+    
+     <select id="validatePassword" resultType="com.oracle.web.bean.Admin">
+     select username from admin where username=#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
     </select>
 </mapper>

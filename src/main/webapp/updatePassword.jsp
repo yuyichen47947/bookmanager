@@ -13,6 +13,16 @@
 <!-- 5.引入BootStrap的核心JS文件 -->
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
      $(function(){
     	 
@@ -21,9 +31,8 @@
      });
 </script>
 <script type="text/javascript" src="js/ajax.js"></script>
-<title>Insert title here</title>
+<title>修改密码</title>
 <script type="text/javascript">
-
 	//校验原密码
 	var flag;
 
@@ -32,12 +41,12 @@
 		var passwordMsg = document.getElementById("passwordMsg");
 		ajax({
 			method : "POST",
-			url : "AdminServlet",
-			params : "action=validatePassword&password=" + password.value,
-			type : "text",
+			url : "validatePassword?password=" + password.value,
+		/* 	params : "action=validatePassword&password=" + password.value, */
+		    type : "text",
 			success : function(data) {
 
-				if (data == "1") {//找到用户名
+				if (data !=null) {//找到用户名
 
 					passwordMsg.style.color = "green";
 
@@ -68,24 +77,6 @@
 		var newpassword = document.updatePassword.newpassword;
 		var reg = /^(\w|\w){6,15}$/;
 		var newpasswordMsg = document.getElementById("newpasswordMsg");
-		/*if (reg.test(newpassword.value)) {
-			if (newpassword.value == password.value) {
-				newpasswordMsg.style.color = "red";
-				newpasswordMsg.innerHTML = "与原密码不能一致";
-				newpassword.focus();
-				return false;
-			} else {
-				newpasswordMsg.style.color = "green";
-				newpasswordMsg.innerHTML = "密码合法";
-				return true;
-			}
-		} else {
-			newpasswordMsg.style.color = "red";
-			newpasswordMsg.innerHTML = "必须是6-15位数字字母下划线或者特殊字符";
-			newpassword.focus();
-			return false;
-		}
-		*/
 		if (!reg.test(newpassword.value)) {//格式不匹配
 
 			newpasswordMsg.style.color = "red";
@@ -137,8 +128,11 @@
 </script>
 </head>
 <body align="center" background="images/003.jpg">
-	<form action="updatePassword" method="post" onsubmit="return jiaoyan()"enctype="application/x-www-form-urlencoded">
+	<form action="updatePassword" method="post"
+		name="updatePassword" onsubmit="return jiaoyan()"
+		enctype="application/x-www-form-urlencoded">
 		<br>
+		 <!-- <input type="hidden" name="_method" value="put"/> -->
 		<p align="center"><font size="7" >修改密码</font></p>
 		<hr size="5px" width="600px" color="#cc6600">
 		<br> <br>
