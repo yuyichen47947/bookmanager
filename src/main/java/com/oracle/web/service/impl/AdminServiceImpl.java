@@ -55,19 +55,4 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.validatePassword(admin);
 	}
 
-
-	@Override
-	@Transactional(readOnly=true)
-	public Admin queryOneAdmin(Integer id) {
-		// TODO Auto-generated method stub
-		return this.adminMapper.selectByPrimaryKey(id);
-	}
-
-
-	@Override
-	@Transactional
-	public void update(Admin admin) {
-		// TODO Auto-generated method stub
-	    this.adminMapper.updateByPrimaryKey(admin);
-	}
 }

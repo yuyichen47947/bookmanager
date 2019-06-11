@@ -41,8 +41,8 @@
 		var passwordMsg = document.getElementById("passwordMsg");
 		ajax({
 			method : "POST",
-			url : "validatePassword",
-		 	params : "password=" + password.value, 
+			url : "validatePassword?password=" + password.value,
+		/* 	params : "action=validatePassword&password=" + password.value, */
 		    type : "text",
 			success : function(data) {
 
@@ -138,7 +138,6 @@
 		<br> <br>
 		<table bordercolor="#993300" border="1" align="center" width="550px"
 			height="250px" cellspacing="0">
-			<!--  	<input type='hidden' name='id' value="${admin.id}" />-->
 			<tr align="center">
 				<td>原密码：</td>
 				<td><input type="text" name="password"

@@ -151,12 +151,7 @@ public class AdminHandler {
 		
 		System.out.println(a);
 		
-		if (a != null) {
-
-			response.getWriter().write(String.valueOf(a));
-
-		}
-//		response.getWriter().write(String.valueOf(a));
+		response.getWriter().write(String.valueOf(a));
 
 	}
 }

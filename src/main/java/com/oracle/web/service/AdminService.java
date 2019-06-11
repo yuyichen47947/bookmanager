@@ -10,10 +10,6 @@ public interface AdminService {
 
 	Admin showAdmin(String uname);
 
-	Admin queryOneAdmin(Integer id);
-
-	void update(Admin admin);
-
 	Admin validatePassword(Admin admin);
 
 	Admin updatePassword(String uname, String newpassword);
