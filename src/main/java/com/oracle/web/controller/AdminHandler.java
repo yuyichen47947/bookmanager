@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.ui.ModelMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -152,7 +151,12 @@ public class AdminHandler {
 		
 		System.out.println(a);
 		
-		response.getWriter().write(String.valueOf(a));
+		if (a != null) {
+
+			response.getWriter().write(String.valueOf(a));
+
+		}
+//		response.getWriter().write(String.valueOf(a));
 
 	}
 }

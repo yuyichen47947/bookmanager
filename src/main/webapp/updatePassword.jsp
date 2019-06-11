@@ -41,8 +41,8 @@
 		var passwordMsg = document.getElementById("passwordMsg");
 		ajax({
 			method : "POST",
-			url : "validatePassword?password=" + password.value,
-		/* 	params : "action=validatePassword&password=" + password.value, */
+			url : "validatePassword",
+		 	params : "password=" + password.value, 
 		    type : "text",
 			success : function(data) {
 
