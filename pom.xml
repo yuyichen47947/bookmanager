@@ -2,39 +2,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.oracle</groupId>
-	<artifactId>bookmanager</artifactId>
+	<artifactId>SSM_bookmanger</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<properties>
-		<spring.version>4.3.7.RELEASE</spring.version>
-	</properties>
-
-	<!-- ssm整合 -->
 	<dependencies>
-		<!-- pagehelper插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>5.0.0</version>
 		</dependency>
-
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<version>4.3.7.RELEASE</version>
 		</dependency>
 
 		<!-- 返回json字符串的支持 -->
@@ -59,7 +40,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
+			<version>4.3.7.RELEASE</version>
 		</dependency>
 
 		<!--Spring-test -->
@@ -67,7 +48,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
+			<version>4.3.7.RELEASE</version>
 		</dependency>
 
 
@@ -76,7 +57,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
-			<version>${spring.version}</version>
+			<version>4.3.7.RELEASE</version>
 		</dependency>
 
 		<!--MyBatis -->
@@ -122,7 +103,21 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+          
+          
 
 		<!-- junit -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -132,8 +127,6 @@
 			<version>4.12</version>
 		</dependency>
 	</dependencies>
-
-	<!-- 配置插件 -->
 	<build>
 		<plugins>
 			<plugin>
@@ -152,10 +145,10 @@
 				<version>6.1.26</version>
 				<configuration>
 					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<webApp>${basedir}/target/bookmanager</webApp>
+					<webApp>${basedir}/target/SSM_bookmanger</webApp>
 					<webAppConfig>
 						<!-- 访问路径 根路径访问，演示/test4又是什么情况 -->
-						<contextPath>/bookmanager</contextPath>
+						<contextPath>/SSM_bookmanger</contextPath>
 					</webAppConfig>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
@@ -166,24 +159,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
 	</build>
 </project>

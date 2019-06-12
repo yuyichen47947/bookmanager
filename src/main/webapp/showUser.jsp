@@ -32,7 +32,7 @@ $(function() {
 	});
 });
 </script>
-   <script>
+   <script type="text/javascript">
    
 		window.onload=function(){
 var selectAll=document.getElementById("selectAll");
@@ -77,7 +77,7 @@ var selectAll=document.getElementById("selectAll");
 					}
 				}
 			};
-			var deleteStudent=document.getElementById("deleteStudent");
+		 var deleteStudent=document.getElementById("deleteStudent");
 			var chek=document.getElementsByName("ids");
 			deleteStudent.onclick=function(){
 				
@@ -118,18 +118,23 @@ var selectAll=document.getElementById("selectAll");
 				
 				if(queren==true){
 					
-					location.href="Userservlet?action=deleteUser&ids="+str;
+					var $url="http://localhost/manager/DUser/"+str;
+					
+					$("#deleteForm").attr("action", $url);
+					// alert($url);
+					$("#deleteForm").submit();
+					return false;
 				}else{
 					
 					location.reload();
 				}
-			};
-			
+			}; 
+		
 		var  outAll=document.getElementById("outAll");
 			outAll.onclick=function(){
 				var flag=confirm("你确定导出所有用户信息吗？");
 				if(flag){
-					window.location.href="OutPutUserServlet?action=all"
+					window.location.href="outAll2"
 				}
 			};
 			
@@ -137,6 +142,7 @@ var selectAll=document.getElementById("selectAll");
 			
 			outSelect.onclick=function(){
 				
+				var chek=document.getElementsByName("ids");
 				var flag = false;
 
 				for (i = 0; i < chek.length; i++) {
@@ -166,7 +172,9 @@ var selectAll=document.getElementById("selectAll");
 					str = str.slice(0, str.length - 1);
 					var flag = confirm("你确定导出选中的用户信息？");
 					if (flag) {//确定
-						window.location.href = "OutPutUserServlet?action=outSelect&ids="+str;
+						//http://localhost:8080/SSM_bookmanger/outSelect/
+						
+						window.location.href = "outSelect2/${s.id}"+str;
 
 					}
 				}
@@ -233,8 +241,21 @@ var selectAll=document.getElementById("selectAll");
 				<td><a href="user/${s.id }"
 						class="deleteId btn btn-danger">删除</a></td>
 				<td><a href="user/${s.id}" class="btn btn-primary">修改</a></td>		
+				
 			</tr>
 			</c:forEach>
+			 
+			<tr align="center"><td colspan="9">
+			<p>
+			<button id="selectAll"><span class="ui-icon ui-icon-circle-check"></span>全选</button>
+			<button id="noselectAll"><span class="ui-icon ui-icon-circle-close"></span>全不选</button>
+			<button id="fanxuan"><span class="ui-icon ui-icon-circle-check"></span>反选</button>
+			<button id="outSelect"><span class="ui-icon ui-icon-circle-triangle-n"></span>导出所选 </button>
+			<button id="outAll"> <span class="ui-icon ui-icon-circle-arrow-n"></span>导出所有</button>
+		 <button id="deleteStudent"><span class="ui-icon ui-icon-trash ui-icon-sm"></span>删除</button> 
+			</p>
+			</td>
+			<tr>
 			
 			
 			<!--  

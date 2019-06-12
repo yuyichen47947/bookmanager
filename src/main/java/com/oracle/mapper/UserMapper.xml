@@ -53,5 +53,31 @@
   
   
   </select>
+   <select id="showUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from user where id in
+  
+    <foreach item="arr" collection="array" index="no" open="("
+			separator="," close=")">
+			#{arr}
+		</foreach>
+  
+  </select>
+  
+  <select id="showUser"  parameterType="java.lang.String" resultMap="BaseResultMap">
+   select * from user 
+  
+  </select>
+  
+  <delete id="deleteByPrimaryKey2" parameterType="java.lang.String">
+   
+    delete from user
+    where id in
+    <foreach item="arr" collection="array" index="no" open="(" separator="," close=")">
+    	#{arr}
+    </foreach>
+
+     
+  
+  </delete>
  
 </mapper>
