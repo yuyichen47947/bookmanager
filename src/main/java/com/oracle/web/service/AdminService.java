@@ -8,5 +8,10 @@ public interface AdminService {
 
 	Admin login(String username);
 
+	Admin showAdmin(String uname);
+
+	Admin validatePassword(Admin admin);
+
+	Admin updatePassword(String uname, String newpassword);
 	
 }

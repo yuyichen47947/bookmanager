@@ -30,5 +30,29 @@ public class AdminServiceImpl implements AdminService {
 		return this.adminMapper.login(username);
 	}
 
-	
+
+	@Override
+	@Transactional(readOnly=true)
+	public Admin showAdmin(String uname) {
+		// TODO Auto-generated method stub
+		return this.adminMapper.showAdmin(uname);
+	}
+
+
+	@Override
+	@Transactional
+	public Admin updatePassword(String uname, String newpassword) {
+		// TODO Auto-generated method stub
+		
+		return adminMapper.updatePassword(uname,newpassword);
+	}
+
+
+	@Override
+	@Transactional(readOnly=true)
+	public Admin validatePassword(Admin admin) {
+		// TODO Auto-generated method stub
+		return adminMapper.validatePassword(admin);
+	}
+
 }

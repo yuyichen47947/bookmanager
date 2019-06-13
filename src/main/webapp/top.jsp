@@ -16,5 +16,4 @@
 <body background="images/002.jpg">
 <br>
  <h1 align="center"><font size="7" color="black" face="幼圆">Oracle图书管理系统后台</font></h1>
-<p align="right"><a href="Qlogin.jsp" target="blank"><span class="glyphicon glyphicon-book" style="font-size: 25px;">图书管理系统前台-</span></a></p>
 </body>
