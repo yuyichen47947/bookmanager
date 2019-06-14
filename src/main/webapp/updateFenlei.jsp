@@ -25,7 +25,7 @@
 </script>
 <title>修改界面</title>
 </head>
-<body>
+<body background="images/003.jpg">
 	
 	<form action="monster" method="post"  class="form-horizontal">
         
@@ -49,7 +49,7 @@
 			<tr>
 				<td align='center' colspan='2'><input type='submit' value='修改' class="btn btn-primary" />
 				   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;<a
-					href='users' class="btn btn-primary">取消</a></td>
+					href='monsters' class="btn btn-primary">取消</a></td>
 			</tr>
 			</table>		
 	  </form>

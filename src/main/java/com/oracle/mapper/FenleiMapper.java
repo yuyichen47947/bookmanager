@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface FenleiMapper {
 
-	int deleteByPrimaryKey(Integer fId);
+	//int deleteByPrimaryKey(Integer fId);
 
 	int insert(Fenlei record);
 
@@ -18,4 +18,10 @@ public interface FenleiMapper {
 	List<Fenlei> selectBypage(int index);
 	
 	List<Fenlei> sesectAllBypage();
+	
+	int deleteByPrimaryKey(String[] arr);
+
+	List<Fenlei> showUserById(String[] arr);
+
+	List<Fenlei> selectAll2();
 }

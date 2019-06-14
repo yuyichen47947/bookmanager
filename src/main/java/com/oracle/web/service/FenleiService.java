@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.oracle.web.bean.Fenlei;
 import com.oracle.web.bean.PageBean;
-import com.oracle.web.bean.User;
+
 
 public interface FenleiService {
 
 	int insert(Fenlei fenlei);
 
-	void delete(Fenlei fenlei);
+	void delete(String[] arr);
 
 	void update(Fenlei fenlei);
 
@@ -19,5 +19,9 @@ public interface FenleiService {
 	PageBean<Fenlei> selectByPage(Integer pageNow, int pageSize);
 
 	PageBean<Fenlei> selectAllPage(Integer pageNow);
+
+	List<Fenlei> showUserByIds(String[] arr);
+
+	List<Fenlei> list2();
 
 }

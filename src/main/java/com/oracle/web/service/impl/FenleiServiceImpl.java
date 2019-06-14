@@ -27,13 +27,6 @@ public class FenleiServiceImpl implements FenleiService {
 	}
 
 	@Override
-	@Transactional
-	public void delete(Fenlei fenlei) {
-		// TODO Auto-generated method stub
-		this.fenleiMapper.deleteByPrimaryKey(fenlei.getfId());
-	}
-
-	@Override
 	public void update(Fenlei fenlei) {
 		// TODO Auto-generated method stub
 		this.fenleiMapper.updateByPrimaryKey(fenlei);
@@ -94,6 +87,27 @@ public class FenleiServiceImpl implements FenleiService {
 		pb.setPageSize(5);
 
 		return pb;
+	}
+
+	@Override
+	@Transactional
+	public void delete(String[] arr) {
+		// TODO Auto-generated method stub
+		
+		this.fenleiMapper.deleteByPrimaryKey(arr);
+		
+	}
+
+	@Override
+	public List<Fenlei> showUserByIds(String[] arr) {
+		// TODO Auto-generated method stub
+		return this.fenleiMapper.showUserById(arr);
+	}
+
+	@Override
+	public List<Fenlei> list2() {
+		// TODO Auto-generated method stub
+		return this.fenleiMapper.selectAll2();
 	}
 
 }
