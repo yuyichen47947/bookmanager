@@ -16,4 +16,6 @@ public interface FenleiService {
 
 	void update(Fenlei fenlei);
 
+	 List<Fenlei> list() ;
+
 }

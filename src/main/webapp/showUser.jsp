@@ -230,8 +230,7 @@ var selectAll=document.getElementById("selectAll");
 				<td>${s.username }</td>
 				<td>${s.password }</td>
 				<td>${s.zhucetime }</td>
-				<td><a href="user/${s.id }"
-						class="deleteId btn btn-danger">删除</a></td>
+				<td><a href="user/${s.id }"class="deleteId btn btn-danger">删除</a></td>
 				<td><a href="user/${s.id}" class="btn btn-primary">修改</a></td>		
 			</tr>
 			</c:forEach>

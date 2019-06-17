@@ -34,7 +34,7 @@ a {
 	});
 </script>
 </head>
-<body background="images/002.jpg">
+<body background="images/1.jpg">
 	<h1 class="demoHeaders">
 		<font color="#CD853F">菜单</font>
 	</h1>
@@ -55,9 +55,9 @@ a {
 			<h2>图书管理</h2>
 			<div>
 				<ul>
-					<li><a href="addBook.jsp" target="right"><span
+					<li><a href="addUI" target="right"><span
 							class="ui-icon ui-icon-star"></span>添加图书</a></li>
-					<li><a href="BookServlet?action=showBookByPage" target="right"><span
+					<li><a href="showByPage" target="right"><span
 							class="ui-icon ui-icon-star"></span>查看图书</a></li>
 				</ul>
 			</div>

@@ -1,109 +1,81 @@
 package com.oracle.web.bean;
 
 public class Book {
-    
-    private Integer bid;
 
-   
-    private String fname;
+	private Integer bid;
 
-    
-    private String bname;
+	private String bname;
 
-   
-    private String price;
+	private String price;
 
-    
-    private String chubanshe;
+	private String chubanshe;
 
-    private String zhuangtai;
+	private String zhuangtai;
 
-    
-    private String jieshuren;
+	private String jieshuren;
 
-   
-    private Integer fId;
+	private Integer fId;
 
-    public Integer getBid() {
-        return bid;
-    }
+	public Integer getBid() {
+		return bid;
+	}
 
-   
-    public void setBid(Integer bid) {
-        this.bid = bid;
-    }
+	public void setBid(Integer bid) {
+		this.bid = bid;
+	}
 
-    
-    public String getFname() {
-        return fname;
-    }
+	public String getBname() {
+		return bname;
+	}
 
-    public void setFname(String fname) {
-        this.fname = fname == null ? null : fname.trim();
-    }
+	public void setBname(String bname) {
+		this.bname = bname == null ? null : bname.trim();
+	}
 
-    public String getBname() {
-        return bname;
-    }
+	public String getPrice() {
+		return price;
+	}
 
-   
-    public void setBname(String bname) {
-        this.bname = bname == null ? null : bname.trim();
-    }
+	public void setPrice(String price) {
+		this.price = price == null ? null : price.trim();
+	}
 
-    
-    public String getPrice() {
-        return price;
-    }
+	public String getChubanshe() {
+		return chubanshe;
+	}
 
-    public void setPrice(String price) {
-        this.price = price == null ? null : price.trim();
-    }
+	public void setChubanshe(String chubanshe) {
+		this.chubanshe = chubanshe == null ? null : chubanshe.trim();
+	}
 
-   
-    public String getChubanshe() {
-        return chubanshe;
-    }
+	public String getZhuangtai() {
+		return zhuangtai;
+	}
 
-  
-    public void setChubanshe(String chubanshe) {
-        this.chubanshe = chubanshe == null ? null : chubanshe.trim();
-    }
+	public void setZhuangtai(String zhuangtai) {
+		this.zhuangtai = zhuangtai == null ? null : zhuangtai.trim();
+	}
 
-   
-    public String getZhuangtai() {
-        return zhuangtai;
-    }
+	public String getJieshuren() {
+		return jieshuren;
+	}
 
-    public void setZhuangtai(String zhuangtai) {
-        this.zhuangtai = zhuangtai == null ? null : zhuangtai.trim();
-    }
+	public void setJieshuren(String jieshuren) {
+		this.jieshuren = jieshuren == null ? null : jieshuren.trim();
+	}
 
-   
-    public String getJieshuren() {
-        return jieshuren;
-    }
+	public Integer getfId() {
+		return fId;
+	}
 
-    
-    public void setJieshuren(String jieshuren) {
-        this.jieshuren = jieshuren == null ? null : jieshuren.trim();
-    }
+	public void setfId(Integer fId) {
+		this.fId = fId;
+	}
 
-    
-    public Integer getfId() {
-        return fId;
-    }
-
-    
-    public void setfId(Integer fId) {
-        this.fId = fId;
-    }
-
-	public Book(Integer bid, String fname, String bname, String price, String chubanshe, String zhuangtai,
-			String jieshuren, Integer fId) {
+	public Book(Integer bid, String bname, String price, String chubanshe, String zhuangtai, String jieshuren,
+			Integer fId) {
 		super();
 		this.bid = bid;
-		this.fname = fname;
 		this.bname = bname;
 		this.price = price;
 		this.chubanshe = chubanshe;
@@ -116,6 +88,11 @@ public class Book {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-    
-    
+
+	@Override
+	public String toString() {
+		return "Book [ bname=" + bname + ", price=" + price + ", chubanshe=" + chubanshe + ", zhuangtai=" + zhuangtai
+				+ ", jieshuren=" + jieshuren + ", fId=" + fId + "]";
+	}
+
 }

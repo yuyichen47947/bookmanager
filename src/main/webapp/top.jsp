@@ -13,7 +13,7 @@
 <!-- 5.引入BootStrap的核心JS文件 -->
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-<body background="images/002.jpg">
+<body background="images/1.jpg">
 <br>
  <h1 align="center"><font size="7" color="black" face="幼圆">Oracle图书管理系统后台</font></h1>
 </body>

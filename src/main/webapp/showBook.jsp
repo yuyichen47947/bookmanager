@@ -1,229 +1,353 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 1.要使用Bootstrap的话，必须是html5文档 -->
-<!-- 2.移动设备优先 -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 3.导入核心的css文件 -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-<!-- 4.需要引入JQuery文件 -->
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+<link rel="stylesheet" href="tubiao/iconfont.css">
+
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
-<!-- 5.引入BootStrap的核心JS文件 -->
+
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+<link type="text/css" rel="stylesheet" href="jquery-ui.css">
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-<script type="text/javascript">
-	$(function() {
-
-		$("tr:even").css("background-color", "#FFCC66");
-		$("tr:odd").css("background-color", "#FFE4B5");
-
-		$("tr").mouseout(function() {
-
-			$("tr:even").css("background-color", "#FFCC66");
-			$("tr:odd").css("background-color", "#FFE4B5");
-
-		});
-
-	});
-</script>
-<title>查看图书</title>
-<link type="text/css" rel="stylesheet" href="jquery-ui.css" />
 <script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript">
-	$(function() {
-
-		$("#deleteBook").button({
-			icon : "ui-icon-trash",
-			showLabel : true
-		});
-
-	});
-</script>
-<script>
 	window.onload = function() {
-		var deleteBook = document.getElementById("deleteBook");
-		deleteBook.onclick = function() {
-			var chek = document.getElementsByName("ids");
+
+		var selectAll = document.getElementById("selectAll");
+
+		var flag = false;
+		//按钮1
+		selectAll.onclick = function() {
+
+			var check = document.getElementsByName("bids");
+
+			for (var i = 0; i < check.length; i++) {
+
+				check[i].checked = true;
+			}
+
+		};
+
+		var unselsectAll = document.getElementById("unselectAll");
+
+		unselsectAll.onclick = function() {
+
+			var check = document.getElementsByName("bids");
+
+			for (var i = 0; i < check.length; i++) {
+
+				check[i].checked = false;
+			}
+
+		};
+
+		var fanxuan = document.getElementById("fanxuan");
+
+		fanxuan.onclick = function() {
+
+			var check = document.getElementsByName("bids");
+
+			for (var i = 0; i < check.length; i++) {
+
+				if (check[i].checked == true) {
+
+					check[i].checked = false;
+
+				} else {
+
+					check[i].checked = true;
+				}
+
+			}
+
+		};
+
+		var deleteStudent = document.getElementById("deleteStudent");
+
+		deleteStudent.onclick = function() {
+
+			var check = document.getElementsByName("bids");
+
 			var flag = false;
-			for (var i = 0; i < chek.length; i++) {
-				if (chek[i].checked == true) {
+
+			for (var i = 0; i < check.length; i++) {
+
+				if (check[i].checked == true) {
+
 					flag = true;
+
 					break;
 				}
+
 			}
 			if (flag == false) {
-				alert("请至少选择一项进行删除!");
+
+				alert("请至少勾选一个？？？");
+
 				return;
 			}
+
 			var str = "";
-			for (var i = 0; i < chek.length; i++) {
-				if (chek[i].checked == true) {
-					str += chek[i].value + ",";
+
+			for (var i = 0; i < check.length; i++) {
+
+				if (check[i].checked == true) {
+
+					str += check[i].value + ",";
+
+				}
+			}
+			;
+
+			str = str.slice(0, str.length - 1);
+
+			var queren = confirm("你确定删除吗？");
+
+			if (queren == true) {
+
+				var $url = "delete/" + str;
+
+				$("#deleteForm").attr("action", $url);
+
+				//提交表单
+				$("#deleteForm").submit();
+
+				return false;
+
+			} else {
+
+				location.reload();
+			}
+
+		}
+
+		//导出所有用户信息
+		var outputAll = document.getElementById("outputAll");
+
+		outputAll.onclick = function() {
+
+			var queren = confirm("你确定导出所有页面数据吗？");
+
+			if (queren == true) {
+
+				window.location.href = "outputAll";
+			}
+
+		};
+
+		//导出选中
+		var outputSelect = document.getElementById("outputSelect")
+
+		outputSelect.onclick = function() {
+
+			var check = document.getElementsByName("bids");
+
+			var flag = false;
+
+			for (var i = 0; i < check.length; i++) {
+
+				if (check[i].checked == true) {
+
+					flag = true;
+
+					break;
+
+				}
+
+			}
+			if (flag == false) {
+
+				alert("请至少勾选一个？？？");
+
+				return;
+			}
+
+			var str = "";
+
+			for (var i = 0; i < check.length; i++) {
+
+				if (check[i].checked == true) {
+
+					str += check[i].value + ",";
+
 				}
 			}
 			str = str.slice(0, str.length - 1);
+
 			alert(str);
-			var queren = confirm("您确认要删除这些分类吗");
+
+			var queren = confirm("你确定导出所选用户的数据吗？");
+
 			if (queren == true) {
-				location.href = "BookServlet?action=delete&ids=" + str;
+
+				location.href = "outputSelect/" + str;
 			} else {
+
 				location.reload();
 			}
-		}
+
+		};
+
 	};
 </script>
-</head>
-<body background="images/003.jpg">
-	<p align="center">
-		<font size="7">查看图书</font>
-	</p>
-	<div class="dropdown"><a href="#" class="dropdown-toggle"
-		data-toggle="dropdown"><font size="5" face="幼圆"><span class="glyphicon glyphicon-search">高级搜索</span></font><span class="caret"></span></a>
-		<div class="col-md-1 "></div>
-		<br>
-		<ul class="dropdown-menu dropdown-menu-left" role="menu">
-			<li>
-				<form action="BookServlet" class="form-horizontal">
-					<!-- 隐藏域，用来传递action -->
-					<input type="hidden" name="action" value="showBookByWhere">
-					<div class="control-group   ">
-						<br> <label class="col-md-4">分类： </label>
-						<div class="col-sm-7 ">
-							<select name="fname" class="form-control  input-sm">
-								<option value="0">--请选择分类--</option>
-								<c:forEach items="${list }" var="b">
-									<option>${b.fname}</option>
-								</c:forEach>
-							</select><br>
-						</div>
-					</div>
+<style type="text/css">
+h1 {
+	font-size: 200%;
+	color: black;
+	opacity: 0.75;
+}
 
-					<div class="control-group  ">
-						<br><label class="col-sm-4 ">书名:</label>
-						<div class="col-sm-7 ">
-							<input name="name" type="text" class="form-control  input-sm" /><br>
-						</div>
-					</div>
+#div3 {
+	margin-top: 30px;
+	width: 1000px;
+	height: 520px;
+	margin-left: 30px;
+}
 
-					<div class="control-group   ">
-						<br><label class="col-sm-4"> 出版社:</label>
-						<div class="col-sm-7">
-							<input name="publish" type="text" class="form-control  input-sm" /><br>
-						</div>
-					</div>
+#div2 {
+	margin-left: 10px;
+}
+
+#div1 {
+	background-image: url("tu/t6.jpg");
+	background-size: cover;
+}
+
+#u1 {
+	width: 300px;
+	height: 365px;
+	margin-left: 130px;
+}
+
+#li {
+	color: #337AB7;
+	font-size: 17px;
+}
+</style>
+<body background="images/1.jpg">
+	<div class="container">
+		<caption align="top">
+			<h1 align="center">
+				<font>查看图书</font>
+			</h1>
+			<br>
+		</caption>
+		<div class="container">
+			<table align="center" width="800px" height="300px" border="1px"
+				class="table" cellspacing="0" bordercolor="silver">
+				<tr align="center">
+					<td>选项</td>
+					<td>编号</td>
+					<td>书名</td>
+					<td>价格</td>
+					<td>出版社</td>
+					<td>状态</td>
+					<td>借书人</td>
+					<td>分类名称</td>
+					<td>修改</td>
+				</tr>
+
+				<c:forEach items="${pb.beanList }" var="s" varStatus="q">
+					<tr align=center>
+						<td><input type="checkbox" name="bids" value="${s.bid}" /></td>
+						<td>${s.bid }</td>
+						<td>${s.bname }</td>
+						<td>${s.price }</td>
+						<td>${s.chubanshe }</td>
+						<td>${s.zhuangtai }</td>
+						<td>${s.jieshuren }</td>
+						<td>${s.fenLei.fname }</td>
+						<td><a href="book/${s.bid}" class=" btn btn-primary">修改</a></td>
+					</tr>
+				</c:forEach>
+
+				<%-- <td colspan="10" align="center"><a href="book/${s.bid }"
+					class="deleteId btn btn-danger">删除</a></td>
+					 --%>
+
+				<td colspan="10" align="center">
+					<button id="deleteStudent" class="btn btn-danger btn-danger">删除</button>
+				</td>
+
+			</table>
+
+			<form action="" method="POST" id="deleteForm">
+				<input type="hidden" name="_method" value="DELETE" />
+			</form>
+
+		</div>
+
+		<center>
+			<button id="selectAll" class="btn btn-success btn-xs">全选</button>
+			<button id="unselectAll" class="btn btn-warning  btn-xs">全不选</button>
+			<button id="fanxuan" class="btn btn-primary btn-xs">反选</button>
+			<button id="outputSelect" class="btn btn-success btn-xs">导出选择</button>
+			<button id="outputAll" class="btn btn-primary btn-xs">导出全部</button>
 
 
-					<div class="control-group   ">
-						<label class="col-sm-4 ">借书人:</label>
-						<div class="col-sm-7">
-							<input name="borrower" type="text" class="form-control  input-sm" /><br>
-						</div>
-					</div>
+			<div>
+				<br>
+				<p align="center">
+					<a href="addUI" class="btn btn-primary btn-xs">添加图书</a>
+				</p>
 
-					<div class="control-group    ">
-						<label class="col-sm-4"> 状态:</label>
-						<div class="col-sm-7">
-							<input name="state" type="text" class="form-control  input-sm" /><br>
-						</div>
-					</div>
 
-					<div class="control-group  ">
-                      <label class="col-sm-4 "></label>
-						<div class="controls ss">
-							<button type="submit" class="btn   btn-warning ">
-								<span class="glyphicon glyphicon-search"></span> 开始搜索
-							</button>
-						</div>
-					</div>
-				</form>
-			</li>
-		</ul></div>
-	<table align="center" border="2" width="1000px" height="480px">
-		<tr align="center">
-			<td>图书编号</td>
-			<td>分类名称</td>
-			<td>图书名称</td>
-			<td>图书价格</td>
-			<td>图书出版社</td>
-			<td>状态</td>
-			<td>借书人</td>
-			<td><button id="deleteBook">删除</button></td>
-			<td>修改</td>
-		</tr>
-		<c:forEach items="${pb.beanList }" var="b" varStatus="s">
-			<tr align="center">
-				<td>${s.index+1 }</td>
-				<td>${b.fname}</td>
-				<td>${b.name}</td>
-				<td>${b.price}</td>
-				<td>${b.publish}</td>
-				<td>${b.state}</td>
-				<td>${b.borrower}</td>
-				<td><input type="checkbox" name="ids" value="${b.id}"></td>
-				<td><a href="BookServlet?action=showOne&id=${b.id}"><span
-						class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span></a></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<center>
-		<ul class="pagination">
-			<li><a href="${pb.url }&pageNow=1">首页</a></li>
-             <c:if test="${pb.pageNow>1 }">
-				<li><a
-					href="${pb.url }&pageNow=${pb.pageNow-1 }">上一页</a></li>
-			</c:if>
-<!-- 分两种情况：
-		      如果页数小于10：
+
+				<center>
+					<!-- 更改分页的样式=====》ul列表 -->
+					<ul class="pager">
+						<li><a href="showByPage?pageNow=1">首页</a> &nbsp;&nbsp;
+						<li><c:if test="${pb.pageNow>1 }">
+								<li><a href="showByPage?pageNow=${pb.pageNow-1 }">上一页</a>
+								<li>
+							</c:if> &nbsp; <!-- 分两种情况：
+		         如果页数小于10：
 		         如果页数大于10：         
-		        -->
-			<c:choose>
-				<c:when test="${pb.pages<=10 }">
-					<c:set var="begin" value="1"></c:set>
-					<c:set var="end" value="${pb.pages }"></c:set>
-				</c:when>
-				<c:otherwise>
-					<c:set var="begin" value="${pb.pageNow-5 }"></c:set>
-					<c:set var="end" value="${pb.pageNow+4 }"></c:set>
-					<c:if test="${begin<=1 }">
-						<c:set var="begin" value="1"></c:set>
-						<c:set var="end" value="10"></c:set>
-					</c:if>
-					<c:if test="${end>=pb.pages }">
-						<c:set var="begin" value="${pb.pages-9 }"></c:set>
-						<c:set var="end" value="${pb.pages }"></c:set>
-					</c:if>
-				</c:otherwise>
-			</c:choose>
-			<!-- 循环十个数 -->
-			<c:forEach begin="${begin }" end="${end }" var="i">
-				<c:choose>
-					<c:when test="${pb.pageNow==i }">
-						<li class="active"><span>${i}</span></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="${pb.url }&pageNow=${i }">[${i }]</a></li>
-					</c:otherwise>
-				</c:choose>
+		        --> <c:choose>
+								<c:when test="${pb.pages<=10 }">
+									<c:set var="begin" value="1"></c:set>
+									<c:set var="end" value="${pb.pages }"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="begin" value="${pb.pageNow-5 }"></c:set>
+									<c:set var="end" value="${pb.pageNow+4 }"></c:set>
+									<c:if test="${begin<=1 }">
+										<c:set var="begin" value="1"></c:set>
+										<c:set var="end" value="10"></c:set>
+									</c:if>
+									<c:if test="${end>=pb.pages }">
+										<c:set var="begin" value="${pb.pages-9 }"></c:set>
+										<c:set var="end" value="${pb.pages }"></c:set>
+									</c:if>
+								</c:otherwise>
+							</c:choose> <!-- 循环十个数 --> <c:forEach begin="${begin }" end="${end }"
+								var="i">
+								<c:choose>
+									<c:when test="${pb.pageNow==i }">
+										<span>${i}</span>
+									</c:when>
+									<c:otherwise>
+										<li><a href="showByPage?pageNow=${i }">${i }</a></li>
+									</c:otherwise>
+								</c:choose>
 
-			</c:forEach>
+							</c:forEach> &nbsp; <c:if test="${pb.pageNow<pb.pages }">
+								<li><a href="showByPage?pageNow=${pb.pageNow+1 }">下一页</a></li>
+							</c:if> &nbsp;&nbsp;
+						<li><a href="showByPage?pageNow=${pb.pages }">尾页</a></li>
+					</ul>
 
-            <c:if test="${pb.pageNow<pb.pages }">
-				<li><a
-					href="${pb.url }&pageNow=${pb.pageNow+1 }">下一页</a></li>
-			</c:if>
-
-            <li><a
-				href="${pb.url }&pageNow=${pb.pages }">尾页</a></li>
-		</ul>
-	</center>
-	<p align="center">第${pb.pageNow }页/共${pb.pages }页</p>
-
-	<p align="center">
-		<font size="4">没有您要的图书？点击这里<a href="addBook.jsp">添加图书</a></font>
-	</p>
+					<p align="center">第${pb.pageNow }页/共${pb.pages }页</p>
+					<br>
+			</div>
+	</div>
 </body>
 </html>
