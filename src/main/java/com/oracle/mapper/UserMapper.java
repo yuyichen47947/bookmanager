@@ -4,7 +4,7 @@ import com.oracle.web.bean.User;
 import java.util.List;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
@@ -19,4 +19,10 @@ public interface UserMapper {
 	List<User> selectBypage(int index);
 
 	List<User> sesectAllBypage();
+
+	List<User> showUserById(String[] arr);
+
+	List<User> showUser();
+
+	int deleteByPrimaryKey2(String[] arr);
 }

@@ -75,11 +75,11 @@ a {
 				<li><a href="showAdmin" target="right"><span
 						class="ui-icon ui-icon-star"></span>查看管理员信息</a></li>
 				<li>
-			<a href="updatePassword" target="right"><span
+			<a href="updatePassword.jsp" target="right"><span
 					class="ui-icon ui-icon-star"></span>修改密码</a>
 				</li>
 				<li>
-			<a href="exit" target="_parent"><span
+			<a href="login.jsp" target="_parent"><span
 					class="ui-icon ui-icon-star"></span>退出系统</a>
 				</li>
 				</ul>

@@ -99,5 +99,25 @@ public void update(User user) {
 	this.userMapper.updateByPrimaryKey(user);
 }
 
+@Override
+public List<User> showUserByIds(String[] arr) {
+	// TODO Auto-generated method stub
+	return userMapper.showUserById(arr);
+}
+
+@Override
+public List<User> showUser() {
+	// TODO Auto-generated method stub
+	return userMapper.showUser();
+}
+
+@Override
+public void deleteUser(String[] arr) {
+	// TODO Auto-generated method stub
+	this.userMapper.deleteByPrimaryKey2(arr);
+	
+	
+}
+
 
 }

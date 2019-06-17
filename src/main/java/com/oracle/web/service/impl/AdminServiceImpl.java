@@ -41,10 +41,18 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public int updatePassword(String uname, String newpassword) {
+	public Admin updatePassword(String uname, String newpassword) {
 		// TODO Auto-generated method stub
-		return this.adminMapper.updatePassword(uname,newpassword);
+		
+		return adminMapper.updatePassword(uname,newpassword);
 	}
 
-	
+
+	@Override
+	@Transactional(readOnly=true)
+	public Admin validatePassword(Admin admin) {
+		// TODO Auto-generated method stub
+		return adminMapper.validatePassword(admin);
+	}
+
 }

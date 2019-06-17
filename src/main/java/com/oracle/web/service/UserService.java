@@ -21,6 +21,10 @@ public interface UserService {
 
 	void update(User user);
 
-	
+	List<User> showUserByIds(String[] arr);
+
+	List<User> showUser();
+
+	void deleteUser(String[] arr);
   
 }
